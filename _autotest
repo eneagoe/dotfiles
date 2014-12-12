@@ -1,0 +1,5 @@
+require 'autotest/growl'
+require 'autotest/restart'
+require 'autotest/fsevent'
+
+Autotest::Growl::show_modified_files = true

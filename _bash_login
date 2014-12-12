@@ -1,0 +1,96 @@
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin::$PATH"
+export PATH="/Applications/Octave.app/Contents/Resources/bin:/usr/local/Cellar/smlnj/110.75/libexec/bin:$PATH"
+
+export PROJECT="/Users/eneagoe/work/current_project"
+export EULER_PROJECT="/Users/eneagoe/work/personal/euler"
+export SPOJ_PROJECT="/Users/eneagoe/work/personal/spoj"
+export PERSONAL_PROJECT="/Users/eneagoe/work/personal/book_club"
+
+# aliases
+alias s='cd /Users/eneagoe/work/study'
+alias sc='rails console'
+alias scs='rails console --sandbox'
+alias ss='rails server'
+alias u='unicorn_rails'
+alias v='vim'
+alias p='cd $PROJECT'
+alias pp='cd $PERSONAL_PROJECT'
+alias pe='cd $EULER_PROJECT'
+alias sp='cd $SPOJ_PROJECT'
+alias tl='tail -f log/development.log | grep -vE "(^\s*$|asset)"'
+alias rc='cat /dev/null > log/development.log'
+alias t='cd /Users/eneagoe/work/temp/test/current'
+
+alias c='clear'
+alias e='exit'
+
+alias tu='top -o cpu'
+alias tm='top -o vsize'
+
+alias ga='git add'
+alias gb='git checkout -b'
+alias gm='git commit -m'
+alias gp='git push bitbucket master && git push staging master'
+alias gf='git fetch'
+alias gst='git status'
+alias gbm='git pull bitbucket master'
+alias full_deploy='git push bitbucket master && git push staging master && git push production master'
+
+alias be='bundle exec'
+alias watcher="watchr ~/.watchr/rails.rb"
+
+alias ru='rubocop'
+
+function parse_git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "("${ref#refs/heads/}")"
+}
+
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[0;33m\]"
+GREEN="\[\033[0;32m\]"
+BLACK="\[\033[0;30m\]"
+
+PS1="\h:\W$GREEN \$(parse_git_branch)$BLACK\$ "
+
+export SENDGRID_DOMAIN=""
+export SENDGRID_PASSWORD=''
+export SENDGRID_USERNAME=""
+
+export INTERCEPT_EMAIL="true"
+export INTERCEPTOR_ADDRESS=""
+
+export DATABASE_PASSWORD=""
+
+#export GNUTERM='X11'
+export GNUTERM='aqua'
+
+export SBT_OPTS="-XX:MaxPermSize=384m"
+
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+source ~/.profile
+
+function mcd() { mkdir $1 && cd $1; }
+
+work () {
+  heroku logout
+  ssh-add -d ~/.ssh/XXX_rsa
+  ssh-add ~/.ssh/YYY_rsa
+  cp ~/.amazon.env.work ~/.amazon.env
+}
+
+freelance () {
+  heroku logout
+  ssh-add -d ~/.ssh/YYY_rsa
+  ssh-add ~/.ssh/XXX_rsa
+  cp ~/.amazon.env.freelance ~/.amazon.env
+}
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export ELASTICSEARCH_URL=http://localhost:9200
+
+/usr/local/bin/fortune -a
