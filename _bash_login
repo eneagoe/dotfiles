@@ -29,6 +29,7 @@ alias tm='top -o vsize'
 
 alias ga='git add'
 alias gb='git checkout -b'
+alias gd='git diff'
 alias gm='git commit -m'
 alias gp='git push bitbucket master && git push staging master'
 alias gf='git fetch'
@@ -40,6 +41,7 @@ alias be='bundle exec'
 alias watcher="watchr ~/.watchr/rails.rb"
 
 alias ru='rubocop'
+alias rud='git diff --name-only | grep '.rb$' | xargs rubocop'
 
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
