@@ -1,0 +1,46 @@
+if not appIsRunning("iTerm") then
+    tell application "iTerm"
+        activate
+        tell the first terminal
+            repeat 6 times
+                launch session "Default Session"
+            end repeat
+            -- prepare the development setup for the current Rails project
+            tell session 1
+                -- add the bitbucket ssh key, clear logs and start tailing the development log
+                write text "ssh-add /Users/eneagoe/.ssh/appmospheres_rsa; p; rc; tl"
+            end tell
+            tell session 2
+                -- start the rails console
+                write text "p; bundle exec rails console"
+            end tell
+            tell session 3
+                -- just move to the project directory
+                write text "p"
+            end tell
+            tell session 4
+                -- start testing tool
+                write text "bundle exec guard"
+            end tell
+            tell session 5
+                -- start the rails server
+                write text "p; bundle exec rails server"
+            end tell
+            tell session 6
+                -- start a Midnight Commander
+                write text "mc"
+            end tell
+        end tell
+    end tell
+end if
+
+set theListOfApps to {"TextMate", "Firefox", "Skype", "Safari"}
+repeat with theCurrentApp in theListOfApps
+    if not appIsRunning(theCurrentApp) then
+        tell application theCurrentApp to activate
+    end if
+end repeat
+
+on appIsRunning(appName)
+    tell application "System Events" to (name of processes) contains appName
+end appIsRunning

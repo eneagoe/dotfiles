@@ -1,0 +1,10 @@
+set theListOfApps to {"TextMate", "Skype", "Safari"}
+repeat with theCurrentApp in theListOfApps
+    if appIsRunning(theCurrentApp) then
+        tell application theCurrentApp to quit
+    end if
+end repeat
+
+on appIsRunning(appName)
+    tell application "System Events" to (name of processes) contains appName
+end appIsRunning
