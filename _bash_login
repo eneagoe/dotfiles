@@ -43,7 +43,7 @@ alias be='bundle exec'
 alias watcher="watchr ~/.watchr/rails.rb"
 
 alias ru='rubocop'
-alias rud='git diff --name-only | grep '.rb$' | xargs rubocop'
+alias rud='git ls-files --other --modified --exclude-standard | grep "\.rb$" | xargs rubocop'
 
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
