@@ -99,4 +99,15 @@ freelance () {
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export ELASTICSEARCH_URL=http://localhost:9200
 
+# bash completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+# autocomplete for tmuxinator
+source /usr/local/etc/bash_completion.d/tmuxinator
+
+# set working directories
+export CDPATH="/Users/eneagoe/work/personal:/Users/eneagoe/work/external/hamilius:/Users/eneagoe/work/study:/Users/eneagoe/Downloads:/Users/eneagoe/work/github"
+
 /usr/local/bin/fortune -a
