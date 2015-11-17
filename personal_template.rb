@@ -7,6 +7,7 @@ gem 'delayed_job_active_record' if using_delayed
 gem 'devise'
 gem 'exception_notification'
 gem 'font-awesome-rails' if yes? 'Use Font-Awesome?'
+gem 'jquery-turbolinks'
 gem 'simple_form'
 using_navigation = yes? 'Use navigation?'
 gem 'simple-navigation' if using_navigation
@@ -24,6 +25,7 @@ gem_group :development, :test do
   gem 'launchy'
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
+  gem 'poltergeist'
   gem 'rack-mini-profiler', require: false
   gem 'rails-erd', require: false
   gem 'simplecov'
