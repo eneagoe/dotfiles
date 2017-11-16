@@ -3,14 +3,36 @@ colorscheme Sunburst
 if has("gui_running")
   set transparency=0
   set guioptions=aAce
-  set guifont=Inconsolata:h14
+  set guifont=Inconsolata:h14,AnonymousPro:h12
+  " set guifont=InputMono:h13,AnonymousPro:h12
+  " set guifont=AnonymousPro:h13
 endif
 "colorscheme adaryn
 "colorscheme codeburn
 set relativenumber
+set number
+
+set sessionoptions="blank,curdir,buffers,sesdir,folds,tabpages,winsize"
+
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd! FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 autocmd! FileType python set sw=4 sts=4 et
+autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
+autocmd! FileType c,cpp set sw=4 sts=4 et
+
+" disable arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+inoremap <Up> <NOP>
+inoremap <Down> <NOP>
+inoremap <Left> <NOP>
+inoremap <Right> <NOP>
+vnoremap <Up> <NOP>
+vnoremap <Down> <NOP>
+vnoremap <Left> <NOP>
+vnoremap <Right> <NOP>
 
 " custom commands
 autocmd BufReadPost *
@@ -52,7 +74,7 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.ctrlp']
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
-let g:ctrlp_max_files=0
+let g:ctrlp_max_files = 0
 set wildignore+=*/log/*,*/tmp/*
 
 if exists('+colorcolumn')
@@ -72,3 +94,27 @@ map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
+map <leader>q :mks! last.vim<cr>:bufdo q!<cr>
+
+"erlang syntax checker
+let g:syntastic_erlang_checkers=['syntaxerl']
+
+" map <leader>rt :!ctags --tag-relative --extra=+f -Rf.git/tags --exclude=.git,pkg -languages=-javascript,sql<cr><cr>
+map <leader>rt :!ctags -R --langmap="ruby:+.rake.builder.jbuilder" --languages=-javascript<cr><cr>
+
+" set tags+=.git/tags
+
+" Bind `q` to close the buffer for help files
+autocmd Filetype help nnoremap <buffer> q :q<CR>
+
+" Copy the entire buffer into the system register
+nmap <leader>co ggVGy
+
+imap kj <ESC>
+imap jk <ESC>
+
+let g:syntastic_javascript_checkers = ['standard']
+" let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["eruby"]}"
+" let g:JSHintHighlightErrorLine = 0
+" au Filetype eruby let JSHintUpdateWriteOnly=1
+" au Filetype eruby let g:syntastic_javascript_checkers = ['']
