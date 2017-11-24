@@ -94,6 +94,10 @@ freelance () {
   cp ~/.amazon.env.freelance ~/.amazon.env
 }
 
+function lb() {
+    vim ~/work/logbook/$(date '+%Y-%m-%d').md
+}
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export DOCKER_HOST=tcp://192.168.59.103:2376
