@@ -26,6 +26,8 @@ alias t='cd /Users/eneagoe/work/temp/test/current'
 alias c='clear'
 alias e='exit'
 
+alias sev='export $(cat .env | xargs)'
+
 alias tu='top -o cpu'
 alias tm='top -o vsize'
 
