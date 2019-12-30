@@ -1,4 +1,4 @@
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin::$PATH"
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/Users/eneagoe/.cargo/bin:$PATH"
 export PATH="/Applications/Octave.app/Contents/Resources/bin:/usr/local/Cellar/smlnj/110.75/libexec/bin:$PATH"
 
 export PROJECT="/Users/eneagoe/work/current_project"
@@ -123,4 +123,7 @@ export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:
 export HISTCONTROL=ignoreboth:erasedups
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
-/usr/local/bin/fortune -a
+# /usr/local/bin/fortune -a
+
+export COCOAPODS_DISABLE_STATS="true"
+export HOMEBREW_NO_INSTALL_CLEANUP=1
