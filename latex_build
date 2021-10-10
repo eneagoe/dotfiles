@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+# run twice, to generate correct references
+latex $1.tex
+latex $1.tex
+
+dvips $1
+ps2pdf -dALLOWPSTRANSPARENCY $1.ps
