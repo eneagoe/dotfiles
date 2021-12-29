@@ -42,6 +42,11 @@ alias gbm='git pull bitbucket master'
 alias full_deploy='git push bitbucket master && git push staging master && git push production master'
 
 alias be='bundle exec'
+alias bo='bundle open'
+alias bu='bundle update'
+alias tc='bundle exec srb tc'
+alias cg='EDITOR=code bundle open'
+
 alias watcher="watchr ~/.watchr/rails.rb"
 
 alias ru='rubocop'
